@@ -16,7 +16,7 @@ class ApnajobsSpider(scrapy.Spider):
         if self.page_count >= 10:
             return
     # Extract URL for next page, if available
-        next_page_url = response.css(".pagination li a[@rel='next']::attr(href)").get()
+        next_page_url = response.css(".pagination li button[text()='Next']").get()
         if next_page_url:
             yield scrapy.Request(url=next_page_url, callback=self.parse)
        
